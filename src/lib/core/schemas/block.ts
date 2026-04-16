@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { DevStubBlockSchema, type DevStubBlock } from "./dev-stub";
-import { StickyBlockSchema } from "./structural";
+import { StickyBlockSchema, ScrollStepsBlockSchema } from "./structural";
 
 export type StickyBlock = {
   type: "sticky";
@@ -9,8 +9,17 @@ export type StickyBlock = {
   props?: { scrim?: "default" | "none" };
 };
 
-export type Block = DevStubBlock | StickyBlock;
+export type ScrollStepsBlock = {
+  type: "scroll-steps";
+  steps: Block[];
+};
+
+export type Block = DevStubBlock | StickyBlock | ScrollStepsBlock;
 
 export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
-  z.discriminatedUnion("type", [DevStubBlockSchema, StickyBlockSchema]),
+  z.discriminatedUnion("type", [
+    DevStubBlockSchema,
+    StickyBlockSchema,
+    ScrollStepsBlockSchema,
+  ]),
 );

@@ -85,3 +85,20 @@ describe("StickyBlock", () => {
     expect(() => BlockSchema.parse(bad)).toThrow();
   });
 });
+
+describe("ScrollStepsBlock", () => {
+  it("accepts a simple step list", () => {
+    const b = {
+      type: "scroll-steps",
+      steps: [
+        { type: "dev-stub", label: "a" },
+        { type: "dev-stub", label: "b" },
+      ],
+    };
+    expect(BlockSchema.parse(b).type).toBe("scroll-steps");
+  });
+
+  it("rejects scroll-steps with missing steps", () => {
+    expect(() => BlockSchema.parse({ type: "scroll-steps" })).toThrow();
+  });
+});

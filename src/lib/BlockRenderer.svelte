@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Block } from './core/schemas/block';
-  import { Sticky } from './structural-primitives';
+  import { Sticky, ScrollSteps } from './structural-primitives';
   import Self from './BlockRenderer.svelte';
   let { block }: { block: Block } = $props();
 </script>
@@ -14,6 +14,12 @@
   >
     <span>{block.label}</span>
   </div>
+{:else if block.type === 'scroll-steps'}
+  <ScrollSteps>
+    {#each block.steps as step, i}
+      <div data-step-index={i} data-testid="scroll-steps-step-{i}"><Self block={step} /></div>
+    {/each}
+  </ScrollSteps>
 {:else if block.type === 'sticky'}
   <Sticky scrim={block.props?.scrim ?? 'default'}>
     {#snippet visual()}<Self block={block.visual} />{/snippet}

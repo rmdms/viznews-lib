@@ -19,3 +19,10 @@ export const StickyBlockSchema: z.ZodType<StickyBlockT> = z.object({
   steps: z.array(z.lazy(() => BlockSchema)),
   props: StickyPropsSchema.optional(),
 }) as z.ZodType<StickyBlockT>;
+
+type ScrollStepsBlockT = { type: "scroll-steps"; steps: Block[] };
+
+export const ScrollStepsBlockSchema: z.ZodType<ScrollStepsBlockT> = z.object({
+  type: z.literal("scroll-steps"),
+  steps: z.array(z.lazy(() => BlockSchema)),
+}) as z.ZodType<ScrollStepsBlockT>;

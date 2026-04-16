@@ -1,0 +1,47 @@
+{
+  "slug": "scroll-steps-demo",
+  "metadata": {
+    "title": "ScrollSteps demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "scroll-steps",
+      "steps": [
+        {
+          "type": "dev-stub",
+          "label": "Step 0 — scroll to observe index change.",
+          "height": 400
+        },
+        {
+          "type": "dev-stub",
+          "label": "Step 1 — second block.",
+          "height": 400
+        },
+        { "type": "dev-stub", "label": "Step 2 — third.", "height": 400 },
+        { "type": "dev-stub", "label": "Step 3 — final.", "height": 400 }
+      ]
+    }
+  ]
+}
