@@ -1,0 +1,70 @@
+{
+  "slug": "composition-demo",
+  "metadata": {
+    "title": "Composition demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "sticky",
+      "visual": {
+        "type": "crossfade",
+        "activeIndex": 0,
+        "frames": [
+          {
+            "type": "dev-stub",
+            "label": "Frame A (visual)",
+            "height": 400,
+            "color": "#fee"
+          },
+          {
+            "type": "dev-stub",
+            "label": "Frame B (visual)",
+            "height": 400,
+            "color": "#eef"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "type": "dev-stub",
+          "label": "Step 1 — long text paragraph demonstrating composition."
+        },
+        { "type": "dev-stub", "label": "Step 2 — second beat." },
+        { "type": "dev-stub", "label": "Step 3 — third beat." },
+        { "type": "dev-stub", "label": "Step 4 — final beat." }
+      ]
+    },
+    {
+      "type": "grid",
+      "columns": 2,
+      "cells": [
+        { "type": "dev-stub", "label": "grid cell 1" },
+        { "type": "dev-stub", "label": "grid cell 2" },
+        { "type": "dev-stub", "label": "grid cell 3" },
+        { "type": "dev-stub", "label": "grid cell 4" }
+      ]
+    }
+  ]
+}
