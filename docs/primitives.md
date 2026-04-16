@@ -10,6 +10,29 @@
 | `Sequence` | §11.6 Pattern B full-width stacked ; iOS safe-area insets ; §11.7 source order | `tests/contracts/sequence.spec.ts` |
 | `Lightbox` | §11.4 top-layer via native `<dialog>` + `showModal()` ; §11.7 focus trap (Escape closes, focus restored to trigger) | `tests/contracts/lightbox.spec.ts` |
 
+---
+
+## Content Primitives (Phase 2)
+
+| Primitive | Block type | Rendering | Key props |
+|---|---|---|---|
+| `Markdown` | `markdown` | `{@html}` scoped typography | `html` |
+| `Image` | `image` | `<img loading=lazy>` + figcaption | `src`, `alt`, `aspectRatio?`, `caption?` |
+| `Video` | `video` | `<video controls>` + reduced-motion | `src`, `alt`, `poster?`, `aspectRatio?`, `caption?` |
+| `DWChart` | `dw-chart` | iframe + postMessage resize | `embedUrl`, `title`, `alt`, `height?` |
+| `FlourishChart` | `flourish-chart` | iframe + postMessage resize | `embedUrl`, `title`, `alt`, `height?` |
+| `MTMap` | `mt-map` | `@maptiler/sdk` canvas | `style`, `bounds`, `alt`, `height?`, `interactive?`, `flyToSteps?` |
+
+### Config Builders (subpath exports)
+
+| Subpath | Purpose | Key exports |
+|---|---|---|
+| `@rmdms/viznews/datawrapper` | DW chart production | `EditorialIntentSchema`, `buildPublishableConfig`, `validatePublishable` |
+| `@rmdms/viznews/flourish` | Flourish embed production | `FlourishIntentSchema`, `buildFlourishEmbed`, `validateFlourishPublishable` |
+| `@rmdms/viznews/maptiler` | MT map production | `SpatialIntentSchema`, `buildPublishableStyle`, `validateSpatialPublishable` |
+
+---
+
 ## Contracts not carried by phase 1 primitives
 
 - §11.1 (DW iframe sizing), §11.3 (MT flyTo), §11.9 (ladder axis-lock), §11.11 (hover/touch-parity), §11.12 (hero responsive), §11.14 (MT lifecycle) — phase 2+.
