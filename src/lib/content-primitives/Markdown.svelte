@@ -13,7 +13,12 @@
     color: var(--vn-color-fg);
     line-height: 1.6;
   }
-  .vn-markdown :global(h1, h2, h3, h4, h5, h6) {
+  .vn-markdown :global(h1),
+  .vn-markdown :global(h2),
+  .vn-markdown :global(h3),
+  .vn-markdown :global(h4),
+  .vn-markdown :global(h5),
+  .vn-markdown :global(h6) {
     font-family: var(--vn-font-heading);
     margin-top: calc(var(--vn-spacing) * 3);
     margin-bottom: calc(var(--vn-spacing) * 1);

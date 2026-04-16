@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-  <style>{`:root { ${cssVars} }`}</style>
+  {@html `<style>:root { ${cssVars} }</style>`}
 </svelte:head>
 
 <div class="vn-root">
