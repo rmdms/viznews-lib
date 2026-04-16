@@ -1,0 +1,9 @@
+src
+tests
+docs
+.github
+.changeset
+.svelte-kit
+*.config.*
+tsconfig.json
+bunfig.toml
