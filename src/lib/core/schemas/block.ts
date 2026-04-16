@@ -9,6 +9,22 @@ import {
   SequenceBlockSchema,
   LightboxBlockSchema,
 } from "./structural";
+import {
+  MarkdownBlockSchema,
+  ImageBlockSchema,
+  VideoBlockSchema,
+  DWChartBlockSchema,
+  FlourishChartBlockSchema,
+  MTMapBlockSchema,
+} from "./content";
+import type {
+  MarkdownBlock,
+  ImageBlock,
+  VideoBlock,
+  DWChartBlock,
+  FlourishChartBlock,
+  MTMapBlock,
+} from "./content";
 
 export type StickyBlock = {
   type: "sticky";
@@ -60,7 +76,13 @@ export type Block =
   | GridBlock
   | SplitBlock
   | SequenceBlock
-  | LightboxBlock;
+  | LightboxBlock
+  | MarkdownBlock
+  | ImageBlock
+  | VideoBlock
+  | DWChartBlock
+  | FlourishChartBlock
+  | MTMapBlock;
 
 export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
   z.discriminatedUnion("type", [
@@ -72,5 +94,11 @@ export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
     SplitBlockSchema,
     SequenceBlockSchema,
     LightboxBlockSchema,
+    MarkdownBlockSchema,
+    ImageBlockSchema,
+    VideoBlockSchema,
+    DWChartBlockSchema,
+    FlourishChartBlockSchema,
+    MTMapBlockSchema,
   ]),
 );
