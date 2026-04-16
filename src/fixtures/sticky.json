@@ -1,0 +1,50 @@
+{
+  "slug": "sticky-demo",
+  "metadata": {
+    "title": "Sticky demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "sticky",
+      "visual": {
+        "type": "dev-stub",
+        "label": "MAP (sticky visual)",
+        "height": 400
+      },
+      "steps": [
+        {
+          "type": "dev-stub",
+          "label": "Step 1 — intro paragraph of some length so that text actually fills a readable column on desktop and wraps nicely on mobile."
+        },
+        {
+          "type": "dev-stub",
+          "label": "Step 2 — second beat, slightly longer than the first to exercise scroll behavior and verify the visual stays pinned."
+        },
+        { "type": "dev-stub", "label": "Step 3 — third beat." },
+        { "type": "dev-stub", "label": "Step 4 — fourth beat, closing." }
+      ]
+    }
+  ]
+}

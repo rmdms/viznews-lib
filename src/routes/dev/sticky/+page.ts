@@ -1,5 +1,5 @@
 import { buildArticlePage } from "$lib/core/build-page";
-import fixture from "$lib/../fixtures/dev-stub.json";
+import fixture from "$lib/../fixtures/sticky.json";
 
 export const prerender = true;
 

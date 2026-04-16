@@ -51,3 +51,37 @@ describe("ArticleSchema", () => {
     expect(() => ArticleSchema.parse(bad)).toThrow();
   });
 });
+
+describe("StickyBlock", () => {
+  it("accepts nested dev-stub visual + steps", () => {
+    const b = {
+      type: "sticky",
+      visual: { type: "dev-stub", label: "map" },
+      steps: [
+        { type: "dev-stub", label: "step 1" },
+        { type: "dev-stub", label: "step 2" },
+      ],
+    };
+    const parsed = BlockSchema.parse(b);
+    expect(parsed.type).toBe("sticky");
+  });
+
+  it("defaults scrim to default when props.scrim omitted", () => {
+    const b = {
+      type: "sticky",
+      visual: { type: "dev-stub", label: "v" },
+      steps: [{ type: "dev-stub", label: "s" }],
+      props: {},
+    };
+    const parsed = BlockSchema.parse(b);
+    expect(parsed.type === "sticky" && parsed.props?.scrim).toBe("default");
+  });
+
+  it("rejects sticky with missing visual", () => {
+    const bad = {
+      type: "sticky",
+      steps: [{ type: "dev-stub", label: "s" }],
+    };
+    expect(() => BlockSchema.parse(bad)).toThrow();
+  });
+});
