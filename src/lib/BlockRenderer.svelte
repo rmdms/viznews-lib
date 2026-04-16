@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Block } from './core/schemas/block';
-  import { Sticky, ScrollSteps, Crossfade, Grid, Split, Sequence } from './structural-primitives';
+  import { Sticky, ScrollSteps, Crossfade, Grid, Split, Sequence, Lightbox } from './structural-primitives';
   import Self from './BlockRenderer.svelte';
   let { block }: { block: Block } = $props();
 </script>
@@ -58,6 +58,11 @@
   <Sequence>
     {#each block.items as item}<Self block={item} />{/each}
   </Sequence>
+{:else if block.type === 'lightbox'}
+  <Lightbox>
+    {#snippet trigger()}<Self block={block.trigger} />{/snippet}
+    {#snippet content()}<Self block={block.content} />{/snippet}
+  </Lightbox>
 {:else if block.type === 'split'}
   {#if block.legend}
     {@const legendBlock = block.legend}

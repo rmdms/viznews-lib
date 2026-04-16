@@ -83,3 +83,11 @@ export const SequenceBlockSchema: z.ZodType<SequenceBlockT> = z.object({
   type: z.literal("sequence"),
   items: z.array(z.lazy(() => BlockSchema)).min(1),
 }) as z.ZodType<SequenceBlockT>;
+
+type LightboxBlockT = { type: "lightbox"; trigger: Block; content: Block };
+
+export const LightboxBlockSchema: z.ZodType<LightboxBlockT> = z.object({
+  type: z.literal("lightbox"),
+  trigger: z.lazy(() => BlockSchema),
+  content: z.lazy(() => BlockSchema),
+}) as z.ZodType<LightboxBlockT>;

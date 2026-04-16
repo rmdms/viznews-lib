@@ -199,3 +199,19 @@ describe("SequenceBlock", () => {
     expect(() => BlockSchema.parse(b)).toThrow();
   });
 });
+
+describe("LightboxBlock", () => {
+  it("accepts trigger + content", () => {
+    const b = {
+      type: "lightbox",
+      trigger: { type: "dev-stub", label: "open" },
+      content: { type: "dev-stub", label: "inside" },
+    };
+    expect(BlockSchema.parse(b).type).toBe("lightbox");
+  });
+
+  it("rejects missing content", () => {
+    const b = { type: "lightbox", trigger: { type: "dev-stub", label: "x" } };
+    expect(() => BlockSchema.parse(b)).toThrow();
+  });
+});

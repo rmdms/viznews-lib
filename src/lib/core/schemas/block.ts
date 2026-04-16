@@ -7,6 +7,7 @@ import {
   GridBlockSchema,
   SplitBlockSchema,
   SequenceBlockSchema,
+  LightboxBlockSchema,
 } from "./structural";
 
 export type StickyBlock = {
@@ -45,6 +46,12 @@ export type SplitBlock = {
 
 export type SequenceBlock = { type: "sequence"; items: Block[] };
 
+export type LightboxBlock = {
+  type: "lightbox";
+  trigger: Block;
+  content: Block;
+};
+
 export type Block =
   | DevStubBlock
   | StickyBlock
@@ -52,7 +59,8 @@ export type Block =
   | CrossfadeBlock
   | GridBlock
   | SplitBlock
-  | SequenceBlock;
+  | SequenceBlock
+  | LightboxBlock;
 
 export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
   z.discriminatedUnion("type", [
@@ -63,5 +71,6 @@ export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
     GridBlockSchema,
     SplitBlockSchema,
     SequenceBlockSchema,
+    LightboxBlockSchema,
   ]),
 );

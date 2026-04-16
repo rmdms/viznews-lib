@@ -1,0 +1,43 @@
+{
+  "slug": "lightbox-demo",
+  "metadata": {
+    "title": "Lightbox demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "lightbox",
+      "trigger": {
+        "type": "dev-stub",
+        "label": "Click to open",
+        "height": 120
+      },
+      "content": {
+        "type": "dev-stub",
+        "label": "Expanded content inside the modal",
+        "height": 400
+      }
+    }
+  ]
+}
