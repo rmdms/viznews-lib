@@ -13,3 +13,12 @@ export type {
 } from "./core/schemas/block";
 export type { Article } from "./core/schemas/article";
 export type { DesignTokens } from "./core/design-tokens";
+export * from "./content-primitives";
+export type {
+  MarkdownBlock,
+  ImageBlock,
+  VideoBlock,
+  DWChartBlock,
+  FlourishChartBlock,
+  MTMapBlock,
+} from "./core/schemas/content";
