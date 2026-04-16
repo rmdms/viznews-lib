@@ -76,3 +76,10 @@ export const SplitBlockSchema: z.ZodType<SplitBlockT> = z.object({
   right: z.lazy(() => BlockSchema),
   legend: z.lazy(() => BlockSchema).optional(),
 }) as z.ZodType<SplitBlockT>;
+
+type SequenceBlockT = { type: "sequence"; items: Block[] };
+
+export const SequenceBlockSchema: z.ZodType<SequenceBlockT> = z.object({
+  type: z.literal("sequence"),
+  items: z.array(z.lazy(() => BlockSchema)).min(1),
+}) as z.ZodType<SequenceBlockT>;

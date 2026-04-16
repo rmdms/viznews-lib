@@ -1,0 +1,38 @@
+{
+  "slug": "sequence-demo",
+  "metadata": {
+    "title": "Sequence demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "sequence",
+      "items": [
+        { "type": "dev-stub", "label": "item 1", "height": 300 },
+        { "type": "dev-stub", "label": "item 2", "height": 300 },
+        { "type": "dev-stub", "label": "item 3", "height": 300 }
+      ]
+    }
+  ]
+}

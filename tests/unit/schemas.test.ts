@@ -187,3 +187,15 @@ describe("SplitBlock", () => {
     expect(() => BlockSchema.parse(b)).toThrow();
   });
 });
+
+describe("SequenceBlock", () => {
+  it("accepts items list", () => {
+    const b = { type: "sequence", items: [{ type: "dev-stub", label: "a" }] };
+    expect(BlockSchema.parse(b).type).toBe("sequence");
+  });
+
+  it("rejects empty items", () => {
+    const b = { type: "sequence", items: [] };
+    expect(() => BlockSchema.parse(b)).toThrow();
+  });
+});
