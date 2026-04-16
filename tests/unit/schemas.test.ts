@@ -102,3 +102,38 @@ describe("ScrollStepsBlock", () => {
     expect(() => BlockSchema.parse({ type: "scroll-steps" })).toThrow();
   });
 });
+
+describe("CrossfadeBlock", () => {
+  it("accepts 2 frames with activeIndex 0", () => {
+    const b = {
+      type: "crossfade",
+      activeIndex: 0,
+      frames: [
+        { type: "dev-stub", label: "A" },
+        { type: "dev-stub", label: "B" },
+      ],
+    };
+    expect(BlockSchema.parse(b).type).toBe("crossfade");
+  });
+
+  it("rejects frames.length < 2", () => {
+    const b = {
+      type: "crossfade",
+      activeIndex: 0,
+      frames: [{ type: "dev-stub", label: "A" }],
+    };
+    expect(() => BlockSchema.parse(b)).toThrow();
+  });
+
+  it("rejects negative activeIndex", () => {
+    const b = {
+      type: "crossfade",
+      activeIndex: -1,
+      frames: [
+        { type: "dev-stub", label: "A" },
+        { type: "dev-stub", label: "B" },
+      ],
+    };
+    expect(() => BlockSchema.parse(b)).toThrow();
+  });
+});

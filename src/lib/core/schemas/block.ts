@@ -1,6 +1,10 @@
 import { z } from "zod";
 import { DevStubBlockSchema, type DevStubBlock } from "./dev-stub";
-import { StickyBlockSchema, ScrollStepsBlockSchema } from "./structural";
+import {
+  StickyBlockSchema,
+  ScrollStepsBlockSchema,
+  CrossfadeBlockSchema,
+} from "./structural";
 
 export type StickyBlock = {
   type: "sticky";
@@ -14,12 +18,23 @@ export type ScrollStepsBlock = {
   steps: Block[];
 };
 
-export type Block = DevStubBlock | StickyBlock | ScrollStepsBlock;
+export type CrossfadeBlock = {
+  type: "crossfade";
+  activeIndex: number;
+  frames: Block[];
+};
+
+export type Block =
+  | DevStubBlock
+  | StickyBlock
+  | ScrollStepsBlock
+  | CrossfadeBlock;
 
 export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
   z.discriminatedUnion("type", [
     DevStubBlockSchema,
     StickyBlockSchema,
     ScrollStepsBlockSchema,
+    CrossfadeBlockSchema,
   ]),
 );

@@ -26,3 +26,15 @@ export const ScrollStepsBlockSchema: z.ZodType<ScrollStepsBlockT> = z.object({
   type: z.literal("scroll-steps"),
   steps: z.array(z.lazy(() => BlockSchema)),
 }) as z.ZodType<ScrollStepsBlockT>;
+
+type CrossfadeBlockT = {
+  type: "crossfade";
+  activeIndex: number;
+  frames: Block[];
+};
+
+export const CrossfadeBlockSchema: z.ZodType<CrossfadeBlockT> = z.object({
+  type: z.literal("crossfade"),
+  activeIndex: z.number().int().min(0),
+  frames: z.array(z.lazy(() => BlockSchema)).min(2),
+}) as z.ZodType<CrossfadeBlockT>;

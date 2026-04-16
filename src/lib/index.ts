@@ -5,6 +5,7 @@ export type {
   DevStubBlock,
   StickyBlock,
   ScrollStepsBlock,
+  CrossfadeBlock,
 } from "./core/schemas/block";
 export type { Article } from "./core/schemas/article";
 export type { DesignTokens } from "./core/design-tokens";

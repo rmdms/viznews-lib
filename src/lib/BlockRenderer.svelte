@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Block } from './core/schemas/block';
-  import { Sticky, ScrollSteps } from './structural-primitives';
+  import { Sticky, ScrollSteps, Crossfade } from './structural-primitives';
   import Self from './BlockRenderer.svelte';
   let { block }: { block: Block } = $props();
 </script>
@@ -20,6 +20,17 @@
       <div data-step-index={i} data-testid="scroll-steps-step-{i}"><Self block={step} /></div>
     {/each}
   </ScrollSteps>
+{:else if block.type === 'crossfade'}
+  <Crossfade activeIndex={block.activeIndex}>
+    {#each block.frames as frame, i}
+      <div
+        data-testid="crossfade-frame-{i}"
+        data-active={i === block.activeIndex}
+      >
+        <Self block={frame} />
+      </div>
+    {/each}
+  </Crossfade>
 {:else if block.type === 'sticky'}
   <Sticky scrim={block.props?.scrim ?? 'default'}>
     {#snippet visual()}<Self block={block.visual} />{/snippet}
