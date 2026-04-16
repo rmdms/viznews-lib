@@ -5,6 +5,7 @@ import {
   ScrollStepsBlockSchema,
   CrossfadeBlockSchema,
   GridBlockSchema,
+  SplitBlockSchema,
 } from "./structural";
 
 export type StickyBlock = {
@@ -33,12 +34,21 @@ export type GridBlock = {
   legend?: Block;
 };
 
+export type SplitBlock = {
+  type: "split";
+  aspectRatio?: string;
+  left: Block;
+  right: Block;
+  legend?: Block;
+};
+
 export type Block =
   | DevStubBlock
   | StickyBlock
   | ScrollStepsBlock
   | CrossfadeBlock
-  | GridBlock;
+  | GridBlock
+  | SplitBlock;
 
 export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
   z.discriminatedUnion("type", [
@@ -47,5 +57,6 @@ export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
     ScrollStepsBlockSchema,
     CrossfadeBlockSchema,
     GridBlockSchema,
+    SplitBlockSchema,
   ]),
 );

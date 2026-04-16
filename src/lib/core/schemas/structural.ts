@@ -57,3 +57,22 @@ export const GridBlockSchema: z.ZodType<GridBlockT> = z.object({
   cells: z.array(z.lazy(() => BlockSchema)).min(1),
   legend: z.lazy(() => BlockSchema).optional(),
 }) as z.ZodType<GridBlockT>;
+
+type SplitBlockT = {
+  type: "split";
+  aspectRatio?: string;
+  left: Block;
+  right: Block;
+  legend?: Block;
+};
+
+export const SplitBlockSchema: z.ZodType<SplitBlockT> = z.object({
+  type: z.literal("split"),
+  aspectRatio: z
+    .string()
+    .regex(/^\d+\s*\/\s*\d+$/)
+    .optional(),
+  left: z.lazy(() => BlockSchema),
+  right: z.lazy(() => BlockSchema),
+  legend: z.lazy(() => BlockSchema).optional(),
+}) as z.ZodType<SplitBlockT>;

@@ -171,3 +171,19 @@ describe("GridBlock", () => {
     expect(() => BlockSchema.parse(b)).not.toThrow();
   });
 });
+
+describe("SplitBlock", () => {
+  it("accepts left + right", () => {
+    const b = {
+      type: "split",
+      left: { type: "dev-stub", label: "L" },
+      right: { type: "dev-stub", label: "R" },
+    };
+    expect(BlockSchema.parse(b).type).toBe("split");
+  });
+
+  it("rejects missing right", () => {
+    const b = { type: "split", left: { type: "dev-stub", label: "L" } };
+    expect(() => BlockSchema.parse(b)).toThrow();
+  });
+});

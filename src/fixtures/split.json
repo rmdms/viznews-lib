@@ -1,0 +1,37 @@
+{
+  "slug": "split-demo",
+  "metadata": {
+    "title": "Split demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "split",
+      "aspectRatio": "4 / 3",
+      "legend": { "type": "dev-stub", "label": "shared legend", "height": 40 },
+      "left": { "type": "dev-stub", "label": "BEFORE" },
+      "right": { "type": "dev-stub", "label": "AFTER" }
+    }
+  ]
+}
