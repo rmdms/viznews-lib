@@ -1,7 +1,7 @@
 {
   "name": "@rmdms/viznews",
   "version": "0.1.0-alpha.0",
-  "description": "Structural primitives for newsroom data-viz articles",
+  "description": "Structural + content primitives for newsroom data-viz articles",
   "license": "MIT",
   "author": "Rémy Dumas",
   "repository": {
@@ -27,13 +27,26 @@
     "./schemas": {
       "types": "./dist/core/schemas/index.d.ts",
       "default": "./dist/core/schemas/index.js"
+    },
+    "./datawrapper": {
+      "types": "./dist/content-primitives/datawrapper/index.d.ts",
+      "default": "./dist/content-primitives/datawrapper/index.js"
+    },
+    "./flourish": {
+      "types": "./dist/content-primitives/flourish/index.d.ts",
+      "default": "./dist/content-primitives/flourish/index.js"
+    },
+    "./maptiler": {
+      "types": "./dist/content-primitives/maptiler/index.d.ts",
+      "default": "./dist/content-primitives/maptiler/index.js"
     }
   },
   "files": [
     "dist"
   ],
   "peerDependencies": {
-    "svelte": "^5.0.0"
+    "svelte": "^5.0.0",
+    "@maptiler/sdk": ">=2.0.0"
   },
   "dependencies": {
     "zod": "^3.23.0"
