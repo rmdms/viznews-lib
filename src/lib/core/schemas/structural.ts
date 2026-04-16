@@ -38,3 +38,22 @@ export const CrossfadeBlockSchema: z.ZodType<CrossfadeBlockT> = z.object({
   activeIndex: z.number().int().min(0),
   frames: z.array(z.lazy(() => BlockSchema)).min(2),
 }) as z.ZodType<CrossfadeBlockT>;
+
+type GridBlockT = {
+  type: "grid";
+  columns?: 2 | 3 | 4;
+  aspectRatio?: string;
+  cells: Block[];
+  legend?: Block;
+};
+
+export const GridBlockSchema: z.ZodType<GridBlockT> = z.object({
+  type: z.literal("grid"),
+  columns: z.union([z.literal(2), z.literal(3), z.literal(4)]).optional(),
+  aspectRatio: z
+    .string()
+    .regex(/^\d+\s*\/\s*\d+$/)
+    .optional(),
+  cells: z.array(z.lazy(() => BlockSchema)).min(1),
+  legend: z.lazy(() => BlockSchema).optional(),
+}) as z.ZodType<GridBlockT>;

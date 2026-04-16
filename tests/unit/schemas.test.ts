@@ -137,3 +137,37 @@ describe("CrossfadeBlock", () => {
     expect(() => BlockSchema.parse(b)).toThrow();
   });
 });
+
+describe("GridBlock", () => {
+  it("accepts cells with optional columns + legend", () => {
+    const b = {
+      type: "grid",
+      columns: 3,
+      cells: [
+        { type: "dev-stub", label: "A" },
+        { type: "dev-stub", label: "B" },
+        { type: "dev-stub", label: "C" },
+      ],
+      legend: { type: "dev-stub", label: "shared legend" },
+    };
+    expect(BlockSchema.parse(b).type).toBe("grid");
+  });
+
+  it("rejects bad aspectRatio format", () => {
+    const b = {
+      type: "grid",
+      aspectRatio: "4:3",
+      cells: [{ type: "dev-stub", label: "A" }],
+    };
+    expect(() => BlockSchema.parse(b)).toThrow();
+  });
+
+  it('accepts aspectRatio "4 / 3"', () => {
+    const b = {
+      type: "grid",
+      aspectRatio: "4 / 3",
+      cells: [{ type: "dev-stub", label: "A" }],
+    };
+    expect(() => BlockSchema.parse(b)).not.toThrow();
+  });
+});

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Block } from './core/schemas/block';
-  import { Sticky, ScrollSteps, Crossfade } from './structural-primitives';
+  import { Sticky, ScrollSteps, Crossfade, Grid } from './structural-primitives';
   import Self from './BlockRenderer.svelte';
   let { block }: { block: Block } = $props();
 </script>
@@ -38,6 +38,22 @@
       {#each block.steps as step}<Self block={step} />{/each}
     {/snippet}
   </Sticky>
+{:else if block.type === 'grid'}
+  {#if block.legend}
+    {@const legendBlock = block.legend}
+    <Grid columns={block.columns ?? 3} aspectRatio={block.aspectRatio ?? '4 / 3'}>
+      {#snippet cells()}
+        {#each block.cells as cell}<Self block={cell} />{/each}
+      {/snippet}
+      {#snippet legend()}<Self block={legendBlock} />{/snippet}
+    </Grid>
+  {:else}
+    <Grid columns={block.columns ?? 3} aspectRatio={block.aspectRatio ?? '4 / 3'}>
+      {#snippet cells()}
+        {#each block.cells as cell}<Self block={cell} />{/each}
+      {/snippet}
+    </Grid>
+  {/if}
 {/if}
 
 <style>
