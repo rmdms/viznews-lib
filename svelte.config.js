@@ -7,11 +7,6 @@ const config = {
   kit: {
     adapter: adapter({ fallback: "index.html" }),
   },
-  package: {
-    source: "src/lib",
-    exports: (filepath) =>
-      filepath === "index.ts" || filepath === "core/schemas/index.ts",
-  },
 };
 
 export default config;
