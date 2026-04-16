@@ -1,0 +1,37 @@
+{
+  "slug": "dw-chart-demo",
+  "metadata": {
+    "title": "DWChart demo",
+    "byline": "test",
+    "publishedAt": "2026-04-17"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "dw-chart",
+      "embedUrl": "https://datawrapper.dwcdn.net/OskRB/1/",
+      "title": "Datawrapper demo chart",
+      "alt": "A bar chart from Datawrapper showing sample data",
+      "height": 400
+    }
+  ]
+}

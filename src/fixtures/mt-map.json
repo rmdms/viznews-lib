@@ -1,0 +1,48 @@
+{
+  "slug": "mt-map-demo",
+  "metadata": {
+    "title": "MTMap demo",
+    "byline": "test",
+    "publishedAt": "2026-04-17"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "mt-map",
+      "style": {
+        "version": 8,
+        "sources": {},
+        "layers": [
+          {
+            "id": "background",
+            "type": "background",
+            "paint": { "background-color": "#e0dfdf" }
+          }
+        ]
+      },
+      "bounds": [6.1, 46.2, 6.25, 46.25],
+      "alt": "Map of Geneva area",
+      "height": 500,
+      "interactive": true
+    }
+  ]
+}
