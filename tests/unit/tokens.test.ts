@@ -35,6 +35,53 @@ describe("DesignTokensSchema", () => {
   });
 });
 
+describe("DesignTokensSchema v3 extensions", () => {
+  const base = defaultTokens();
+
+  it("accepts positioning editorial-tight", () => {
+    const t = { ...base, positioning: "editorial-tight" as const };
+    expect(() => DesignTokensSchema.parse(t)).not.toThrow();
+  });
+
+  it("accepts positioning airy-contemplative", () => {
+    const t = { ...base, positioning: "airy-contemplative" as const };
+    expect(() => DesignTokensSchema.parse(t)).not.toThrow();
+  });
+
+  it("defaults positioning to balanced when omitted", () => {
+    const parsed = DesignTokensSchema.parse(base);
+    expect(parsed.positioning).toBe("balanced");
+  });
+
+  it("rejects unknown positioning value", () => {
+    const t = { ...base, positioning: "zen-ultra" };
+    expect(() => DesignTokensSchema.parse(t)).toThrow();
+  });
+
+  it("accepts optional radius/shadow/border/overlay/layoutRhythm", () => {
+    const t = {
+      ...base,
+      positioning: "balanced" as const,
+      radius: "soft" as const,
+      shadow: "dramatic" as const,
+      border: "hairline" as const,
+      overlay: "darken-20" as const,
+      layoutRhythm: "airy" as const,
+    };
+    expect(() => DesignTokensSchema.parse(t)).not.toThrow();
+  });
+
+  it("rejects invalid radius value", () => {
+    const t = { ...base, radius: "ultra-round" };
+    expect(() => DesignTokensSchema.parse(t)).toThrow();
+  });
+
+  it("defaults breakpoints to { mobile: 768, tablet: 1024 }", () => {
+    const parsed = DesignTokensSchema.parse(base);
+    expect(parsed.breakpoints).toEqual({ mobile: 768, tablet: 1024 });
+  });
+});
+
 describe("tokensToCSSVariables", () => {
   it("returns CSS custom property lines", () => {
     const css = tokensToCSSVariables(defaultTokens());
