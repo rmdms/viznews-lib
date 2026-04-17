@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Block } from './core/schemas/block';
-  import { Sticky, ScrollSteps, Crossfade, Grid, Split, Sequence, Lightbox } from './structural-primitives';
+  import { Sticky, ScrollSteps, Crossfade, Grid, Split, Sequence, Lightbox, Flow } from './structural-primitives';
   import { Markdown, Image, Video, DWChart, FlourishChart, MTMap } from './content-primitives';
   import { ScrollyMap } from './recipes';
   import Self from './BlockRenderer.svelte';
@@ -76,6 +76,8 @@
       {#snippet right()}<Self block={block.right} />{/snippet}
     </Split>
   {/if}
+{:else if block.type === 'flow'}
+  <Flow variant={block.variant} children={block.children} />
 {:else if block.type === 'markdown'}
   <Markdown html={block.html} />
 {:else if block.type === 'image'}

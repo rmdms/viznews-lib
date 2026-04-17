@@ -17,6 +17,7 @@ import {
   SequenceBlockSchema,
   LightboxBlockSchema,
 } from "./structural";
+import { FlowBlockSchema, type FlowBlock } from "./flow";
 import {
   MarkdownBlockSchema,
   ImageBlockSchema,
@@ -106,6 +107,7 @@ export type Block =
   | SplitBlock
   | SequenceBlock
   | LightboxBlock
+  | FlowBlock
   | MarkdownBlock
   | ImageBlock
   | VideoBlock
@@ -117,6 +119,8 @@ export type Block =
   | GalleryCarouselBlock
   | ScrollyMapBlock;
 
+export type { FlowBlock };
+
 export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
   z.union([
     DevStubBlockSchema,
@@ -127,6 +131,7 @@ export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
     SplitBlockSchema,
     SequenceBlockSchema,
     LightboxBlockSchema,
+    FlowBlockSchema,
     MarkdownBlockSchema,
     ImageBlockSchema,
     VideoBlockSchema,
