@@ -5,6 +5,7 @@
     "@rmdms/viznews": "0.2.0"
   },
   "changesets": [
-    "v3-beta-0-foundation"
+    "v3-beta-0-foundation",
+    "v3-beta-1-variants"
   ]
 }
