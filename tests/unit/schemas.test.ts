@@ -215,3 +215,47 @@ describe("LightboxBlock", () => {
     expect(() => BlockSchema.parse(b)).toThrow();
   });
 });
+
+import { StickyBlockSchema } from "../../src/lib/core/schemas/structural";
+
+describe("StickyBlockSchema v3 variant", () => {
+  const base = {
+    type: "sticky" as const,
+    visual: { type: "dev-stub", label: "v" },
+    steps: [{ type: "dev-stub", label: "s1" }],
+  };
+
+  it("defaults variant to sticky-left", () => {
+    const parsed = StickyBlockSchema.parse(base);
+    expect(parsed.variant).toBe("sticky-left");
+  });
+
+  it("accepts explicit sticky-right", () => {
+    const parsed = StickyBlockSchema.parse({
+      ...base,
+      variant: "sticky-right",
+    });
+    expect(parsed.variant).toBe("sticky-right");
+  });
+
+  it("accepts sticky-center-overlay (Tier 1)", () => {
+    expect(() =>
+      StickyBlockSchema.parse({ ...base, variant: "sticky-center-overlay" }),
+    ).not.toThrow();
+  });
+
+  it("accepts sticky-full-with-steps-panel (Tier 2, warning at build)", () => {
+    expect(() =>
+      StickyBlockSchema.parse({
+        ...base,
+        variant: "sticky-full-with-steps-panel",
+      }),
+    ).not.toThrow();
+  });
+
+  it("rejects unknown variant", () => {
+    expect(() =>
+      StickyBlockSchema.parse({ ...base, variant: "diagonal" }),
+    ).toThrow();
+  });
+});

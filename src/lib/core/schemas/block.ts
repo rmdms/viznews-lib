@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { DevStubBlockSchema, type DevStubBlock } from "./dev-stub";
+import type { StickyVariant } from "./variants";
 import {
   StickyBlockSchema,
   ScrollStepsBlockSchema,
@@ -40,6 +41,7 @@ import type {
 
 export type StickyBlock = {
   type: "sticky";
+  variant: StickyVariant;
   visual: Block;
   steps: Block[];
   props?: { scrim?: "default" | "none" };

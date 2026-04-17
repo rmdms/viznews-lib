@@ -1,15 +1,24 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import type { StickyVariant } from '../core/schemas/variants';
+  import { TIER1_RENDER_READY, TIER1_DEFAULTS } from '../core/schemas/variants';
 
   let {
+    variant = 'sticky-left',
     scrim = 'default',
     visual,
     steps
   }: {
+    variant?: StickyVariant;
     scrim?: 'default' | 'none';
     visual: Snippet;
     steps: Snippet;
   } = $props();
+
+  const renderReady = $derived(
+    (TIER1_RENDER_READY.sticky as readonly string[]).includes(variant)
+  );
+  const effectiveVariant = $derived(renderReady ? variant : TIER1_DEFAULTS.sticky);
 
   if (scrim === 'none' && import.meta.env.DEV) {
     console.warn(
@@ -18,7 +27,11 @@
   }
 </script>
 
-<section class="vn-sticky" data-testid="sticky-root">
+<section
+  class="vn-sticky vn-sticky--{effectiveVariant}"
+  data-testid="sticky-root"
+  data-variant={effectiveVariant}
+>
   <div class="vn-sticky__visual" data-testid="sticky-visual">
     {@render visual()}
   </div>
@@ -38,8 +51,31 @@
     grid-template-columns: 1fr;
   }
   @media (min-width: 768px) {
-    .vn-sticky {
+    .vn-sticky--sticky-left {
       grid-template-columns: 1fr 1fr;
+    }
+    .vn-sticky--sticky-right {
+      grid-template-columns: 1fr 1fr;
+    }
+    .vn-sticky--sticky-right .vn-sticky__visual {
+      order: 2;
+    }
+    .vn-sticky--sticky-right .vn-sticky__steps {
+      order: 1;
+    }
+    .vn-sticky--sticky-center-overlay {
+      grid-template-columns: 1fr;
+    }
+    .vn-sticky--sticky-center-overlay .vn-sticky__visual {
+      grid-area: 1 / 1;
+    }
+    .vn-sticky--sticky-center-overlay .vn-sticky__steps {
+      grid-area: 1 / 1;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .vn-sticky--sticky-center-overlay .vn-sticky__steps :global(> *) {
+      pointer-events: auto;
     }
   }
 
@@ -56,7 +92,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: calc(var(--vn-spacing) * 6);
+    gap: var(--vn-layout-rhythm-gap, calc(var(--vn-spacing) * 6));
     padding: 40vh calc(var(--vn-spacing) * 2);
     z-index: 1;
   }
@@ -65,7 +101,7 @@
     background: color-mix(in srgb, var(--vn-color-bg) 92%, transparent);
     backdrop-filter: blur(4px);
     padding: calc(var(--vn-spacing) * 2);
-    border-radius: calc(var(--vn-spacing));
+    border-radius: var(--vn-radius, calc(var(--vn-spacing)));
   }
 
   @media (max-width: 767px) {

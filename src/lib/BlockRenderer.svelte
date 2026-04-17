@@ -34,7 +34,7 @@
     {/each}
   </Crossfade>
 {:else if block.type === 'sticky'}
-  <Sticky scrim={block.props?.scrim ?? 'default'}>
+  <Sticky variant={block.variant} scrim={block.props?.scrim ?? 'default'}>
     {#snippet visual()}<Self block={block.visual} />{/snippet}
     {#snippet steps()}
       {#each block.steps as step}<Self block={step} />{/each}

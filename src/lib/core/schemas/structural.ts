@@ -1,6 +1,20 @@
 import { z } from "zod";
 import { BlockSchema } from "./block";
 import type { Block } from "./block";
+import {
+  StickyVariantSchema,
+  SplitVariantSchema,
+  CrossfadeVariantSchema,
+  GridVariantSchema,
+  LightboxVariantSchema,
+  SequenceVariantSchema,
+  type StickyVariant,
+  type SplitVariant,
+  type CrossfadeVariant,
+  type GridVariant,
+  type LightboxVariant,
+  type SequenceVariant,
+} from "./variants";
 
 export const StickyPropsSchema = z.object({
   scrim: z.enum(["default", "none"]).default("default"),
@@ -8,6 +22,7 @@ export const StickyPropsSchema = z.object({
 
 type StickyBlockT = {
   type: "sticky";
+  variant: StickyVariant;
   visual: Block;
   steps: Block[];
   props?: { scrim?: "default" | "none" };
@@ -15,6 +30,7 @@ type StickyBlockT = {
 
 export const StickyBlockSchema: z.ZodType<StickyBlockT> = z.object({
   type: z.literal("sticky"),
+  variant: StickyVariantSchema.default("sticky-left"),
   visual: z.lazy(() => BlockSchema),
   steps: z.array(z.lazy(() => BlockSchema)),
   props: StickyPropsSchema.optional(),
