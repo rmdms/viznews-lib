@@ -216,7 +216,10 @@ describe("LightboxBlock", () => {
   });
 });
 
-import { StickyBlockSchema } from "../../src/lib/core/schemas/structural";
+import {
+  StickyBlockSchema,
+  SplitBlockSchema,
+} from "../../src/lib/core/schemas/structural";
 
 describe("StickyBlockSchema v3 variant", () => {
   const base = {
@@ -256,6 +259,31 @@ describe("StickyBlockSchema v3 variant", () => {
   it("rejects unknown variant", () => {
     expect(() =>
       StickyBlockSchema.parse({ ...base, variant: "diagonal" }),
+    ).toThrow();
+  });
+});
+
+describe("SplitBlockSchema v3 variant", () => {
+  const base = {
+    type: "split" as const,
+    left: { type: "dev-stub", label: "l" },
+    right: { type: "dev-stub", label: "r" },
+  };
+
+  it("defaults variant to static", () => {
+    const p = SplitBlockSchema.parse(base);
+    expect(p.variant).toBe("static");
+  });
+
+  it("accepts drag-separator", () => {
+    expect(() =>
+      SplitBlockSchema.parse({ ...base, variant: "drag-separator" }),
+    ).not.toThrow();
+  });
+
+  it("rejects unknown variant", () => {
+    expect(() =>
+      SplitBlockSchema.parse({ ...base, variant: "side-by-side" }),
     ).toThrow();
   });
 });

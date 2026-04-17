@@ -68,13 +68,13 @@
 {:else if block.type === 'split'}
   {#if block.legend}
     {@const legendBlock = block.legend}
-    <Split aspectRatio={block.aspectRatio ?? '4 / 3'}>
+    <Split variant={block.variant} aspectRatio={block.aspectRatio ?? '4 / 3'}>
       {#snippet left()}<Self block={block.left} />{/snippet}
       {#snippet right()}<Self block={block.right} />{/snippet}
       {#snippet legend()}<Self block={legendBlock} />{/snippet}
     </Split>
   {:else}
-    <Split aspectRatio={block.aspectRatio ?? '4 / 3'}>
+    <Split variant={block.variant} aspectRatio={block.aspectRatio ?? '4 / 3'}>
       {#snippet left()}<Self block={block.left} />{/snippet}
       {#snippet right()}<Self block={block.right} />{/snippet}
     </Split>

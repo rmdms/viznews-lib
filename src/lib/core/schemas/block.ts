@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { DevStubBlockSchema, type DevStubBlock } from "./dev-stub";
-import type { StickyVariant } from "./variants";
+import type { StickyVariant, SplitVariant } from "./variants";
 import {
   StickyBlockSchema,
   ScrollStepsBlockSchema,
@@ -68,6 +68,7 @@ export type GridBlock = {
 
 export type SplitBlock = {
   type: "split";
+  variant: SplitVariant;
   aspectRatio?: string;
   left: Block;
   right: Block;

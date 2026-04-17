@@ -76,6 +76,7 @@ export const GridBlockSchema: z.ZodType<GridBlockT> = z.object({
 
 type SplitBlockT = {
   type: "split";
+  variant: SplitVariant;
   aspectRatio?: string;
   left: Block;
   right: Block;
@@ -84,6 +85,7 @@ type SplitBlockT = {
 
 export const SplitBlockSchema: z.ZodType<SplitBlockT> = z.object({
   type: z.literal("split"),
+  variant: SplitVariantSchema.default("static"),
   aspectRatio: z
     .string()
     .regex(/^\d+\s*\/\s*\d+$/)
