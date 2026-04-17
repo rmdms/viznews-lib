@@ -1,9 +1,24 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  let { children }: { children: Snippet } = $props();
+  import type { SequenceVariant } from '../core/schemas/variants';
+  import { TIER1_RENDER_READY, TIER1_DEFAULTS } from '../core/schemas/variants';
+
+  let {
+    variant = 'stack',
+    children
+  }: { variant?: SequenceVariant; children: Snippet } = $props();
+
+  const renderReady = $derived(
+    (TIER1_RENDER_READY.sequence as readonly string[]).includes(variant)
+  );
+  const effectiveVariant = $derived(renderReady ? variant : TIER1_DEFAULTS.sequence);
 </script>
 
-<section class="vn-sequence" data-testid="sequence-root">
+<section
+  class="vn-sequence vn-sequence--{effectiveVariant}"
+  data-testid="sequence-root"
+  data-variant={effectiveVariant}
+>
   {@render children()}
 </section>
 

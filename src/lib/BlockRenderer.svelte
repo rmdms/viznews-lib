@@ -23,12 +23,9 @@
     {/each}
   </ScrollSteps>
 {:else if block.type === 'crossfade'}
-  <Crossfade activeIndex={block.activeIndex}>
+  <Crossfade variant={block.variant} activeIndex={block.activeIndex}>
     {#each block.frames as frame, i}
-      <div
-        data-testid="crossfade-frame-{i}"
-        data-active={i === block.activeIndex}
-      >
+      <div data-testid="crossfade-frame-{i}" data-active={i === block.activeIndex}>
         <Self block={frame} />
       </div>
     {/each}
@@ -43,25 +40,25 @@
 {:else if block.type === 'grid'}
   {#if block.legend}
     {@const legendBlock = block.legend}
-    <Grid columns={block.columns ?? 3} aspectRatio={block.aspectRatio ?? '4 / 3'}>
+    <Grid variant={block.variant} columns={block.columns ?? 3} aspectRatio={block.aspectRatio ?? '4 / 3'}>
       {#snippet cells()}
         {#each block.cells as cell}<Self block={cell} />{/each}
       {/snippet}
       {#snippet legend()}<Self block={legendBlock} />{/snippet}
     </Grid>
   {:else}
-    <Grid columns={block.columns ?? 3} aspectRatio={block.aspectRatio ?? '4 / 3'}>
+    <Grid variant={block.variant} columns={block.columns ?? 3} aspectRatio={block.aspectRatio ?? '4 / 3'}>
       {#snippet cells()}
         {#each block.cells as cell}<Self block={cell} />{/each}
       {/snippet}
     </Grid>
   {/if}
 {:else if block.type === 'sequence'}
-  <Sequence>
+  <Sequence variant={block.variant}>
     {#each block.items as item}<Self block={item} />{/each}
   </Sequence>
 {:else if block.type === 'lightbox'}
-  <Lightbox>
+  <Lightbox variant={block.variant}>
     {#snippet trigger()}<Self block={block.trigger} />{/snippet}
     {#snippet content()}<Self block={block.content} />{/snippet}
   </Lightbox>
