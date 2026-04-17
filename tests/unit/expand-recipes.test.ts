@@ -4,7 +4,7 @@ import type { Block } from "../../src/lib/core/schemas/block";
 
 const markdown = (id: string): Block => ({
   type: "markdown",
-  content: `# ${id}`,
+  html: `<p>${id}</p>`,
 });
 const image = (src: string): Block => ({ type: "image", src, alt: "" });
 const devStub = (): Block => ({ type: "dev-stub", label: "stub" });
@@ -103,10 +103,10 @@ describe("expandRecipes", () => {
       type: "scrolly-map",
       map: {
         type: "mt-map",
-        styleId: "style-123",
-        center: [2.3, 48.8],
-        zoom: 10,
-        flyToSteps: [{ center: [2.3, 48.8], zoom: 12 }],
+        style: {},
+        bounds: [2.2, 48.7, 2.4, 48.9] as [number, number, number, number],
+        alt: "Paris",
+        flyToSteps: [{ center: [2.3, 48.8] as [number, number], zoom: 12 }],
       },
       steps: [markdown("step1")],
     };
