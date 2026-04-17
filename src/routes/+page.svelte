@@ -13,13 +13,17 @@
     { path: '/dev/video', name: 'Video', note: 'Video with controls + reduced-motion' },
     { path: '/dev/dw-chart', name: 'DWChart', note: 'Datawrapper iframe embed' },
     { path: '/dev/flourish-chart', name: 'FlourishChart', note: 'Flourish iframe embed' },
-    { path: '/dev/mt-map', name: 'MTMap', note: 'MapTiler SDK map' }
+    { path: '/dev/mt-map', name: 'MTMap', note: 'MapTiler SDK map' },
+    { path: '/dev/scrolly-sticky-content', name: 'ScrollyStickyContent', note: 'Recipe — sticky + scroll (§6.2)' },
+    { path: '/dev/chart-ladder', name: 'ChartLadder', note: 'Recipe — progressive annotation (§6.3)' },
+    { path: '/dev/gallery-carousel', name: 'GalleryCarousel', note: 'Recipe — small multiples + lightbox (§6.7)' },
+    { path: '/dev/scrolly-map', name: 'ScrollyMap', note: 'Recipe — scroll→flyTo map (§6.4)' }
   ];
 </script>
 
 <main>
   <h1>viznews-lib — dev harness</h1>
-  <p>Phase 1 — structural primitives. Phase 2 — content primitives.</p>
+  <p>Phase 1 — structural primitives. Phase 2 — content primitives. Phase 3 — recipes.</p>
   <ul>
     {#each routes as r}
       <li><a href={r.path}>{r.name}</a> — <small>{r.note}</small></li>
