@@ -14,7 +14,7 @@ function walk(block: Block, warnings: string[]): void {
     const ready = TIER1_RENDER_READY[variantKey] as readonly string[];
     if (!ready.includes(b.variant)) {
       warnings.push(
-        `[viznews] variant "${b.variant}" on ${b.type} is Tier 2+ — not yet render-ready in v3.0.0. fallback to Tier 1 default.`,
+        `[viznews] variant "${b.variant}" on ${b.type} is Tier 2+ — not yet render-ready in v3.0.0. Falling back to Tier 1 default.`,
       );
     }
   }

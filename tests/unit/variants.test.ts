@@ -103,7 +103,7 @@ describe("validateVariants — warnings", () => {
     ] as any);
     expect(warnings.length).toBe(1);
     expect(warnings[0]).toMatch(/sticky-full-with-steps-panel/);
-    expect(warnings[0]).toMatch(/fallback/);
+    expect(warnings[0]).toMatch(/[Ff]all(ing|back)/);
   });
 
   it("emits warning for split toggle (Tier 2)", () => {
