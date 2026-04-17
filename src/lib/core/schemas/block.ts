@@ -25,6 +25,18 @@ import type {
   FlourishChartBlock,
   MTMapBlock,
 } from "./content";
+import {
+  ScrollyStickyContentBlockSchema,
+  ChartLadderBlockSchema,
+  GalleryCarouselBlockSchema,
+  ScrollyMapBlockSchema,
+} from "./recipes";
+import type {
+  ScrollyStickyContentBlock,
+  ChartLadderBlock,
+  GalleryCarouselBlock,
+  ScrollyMapBlock,
+} from "./recipes";
 
 export type StickyBlock = {
   type: "sticky";
@@ -82,10 +94,14 @@ export type Block =
   | VideoBlock
   | DWChartBlock
   | FlourishChartBlock
-  | MTMapBlock;
+  | MTMapBlock
+  | ScrollyStickyContentBlock
+  | ChartLadderBlock
+  | GalleryCarouselBlock
+  | ScrollyMapBlock;
 
 export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
-  z.discriminatedUnion("type", [
+  z.union([
     DevStubBlockSchema,
     StickyBlockSchema,
     ScrollStepsBlockSchema,
@@ -100,5 +116,9 @@ export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
     DWChartBlockSchema,
     FlourishChartBlockSchema,
     MTMapBlockSchema,
+    ScrollyStickyContentBlockSchema,
+    ChartLadderBlockSchema,
+    GalleryCarouselBlockSchema,
+    ScrollyMapBlockSchema,
   ]),
 );
