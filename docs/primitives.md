@@ -44,3 +44,33 @@
 - Playwright matrix 375/768/1440 × [no-preference, reduce] green.
 - `bun test tests/unit` green (schemas, build-page, tokens).
 - `bun run check` = 0 errors.
+
+---
+
+## Named Recipes (Phase 3)
+
+Recipes are shorthand block types in `spec.json` that expand into primitive trees at build time. Three are pure schema sugar (zero new rendering); one (`scrolly-map`) has a glue component.
+
+| Recipe | Block type | Expands to | Key props |
+|---|---|---|---|
+| ScrollyStickyContent | `scrolly-sticky-content` | `sticky` | `visual`, `steps`, `scrim?` |
+| ChartLadder | `chart-ladder` | `sticky` > `crossfade` | `frames`, `steps` (same length) |
+| GalleryCarousel | `gallery-carousel` | `grid` > `lightbox[]` | `cells`, `columns?`, `aspectRatio?` |
+| ScrollyMap | `scrolly-map` | *Not expanded* — glue component | `map` (with `flyToSteps`), `steps` |
+
+### Expansion pipeline
+
+```
+spec.json → Zod parse (recipes are valid block types)
+          → expandRecipes() (3 sugar recipes → primitive trees)
+          → tokensToCSSVariables
+          → ArticlePageData (only primitives + scrolly-map remain)
+          → BlockRenderer (renders primitives + ScrollyMap glue)
+```
+
+### Contracts
+
+- `scrolly-sticky-content` — inherits §11.4, §11.5, §11.6, §11.7 from Sticky
+- `chart-ladder` — inherits Sticky + §11.2 from Crossfade
+- `gallery-carousel` — inherits §11.10 from Grid + §11.4, §11.7 from Lightbox
+- `scrolly-map` — §11.3 (flyTo), §11.14 (MT lifecycle), inherits §11.7 from ScrollSteps
