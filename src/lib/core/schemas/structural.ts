@@ -45,18 +45,21 @@ export const ScrollStepsBlockSchema: z.ZodType<ScrollStepsBlockT> = z.object({
 
 type CrossfadeBlockT = {
   type: "crossfade";
+  variant: CrossfadeVariant;
   activeIndex: number;
   frames: Block[];
 };
 
 export const CrossfadeBlockSchema: z.ZodType<CrossfadeBlockT> = z.object({
   type: z.literal("crossfade"),
+  variant: CrossfadeVariantSchema.default("fade"),
   activeIndex: z.number().int().min(0),
   frames: z.array(z.lazy(() => BlockSchema)).min(2),
 }) as z.ZodType<CrossfadeBlockT>;
 
 type GridBlockT = {
   type: "grid";
+  variant: GridVariant;
   columns?: 2 | 3 | 4;
   aspectRatio?: string;
   cells: Block[];
@@ -65,6 +68,7 @@ type GridBlockT = {
 
 export const GridBlockSchema: z.ZodType<GridBlockT> = z.object({
   type: z.literal("grid"),
+  variant: GridVariantSchema.default("uniform"),
   columns: z.union([z.literal(2), z.literal(3), z.literal(4)]).optional(),
   aspectRatio: z
     .string()
@@ -95,17 +99,28 @@ export const SplitBlockSchema: z.ZodType<SplitBlockT> = z.object({
   legend: z.lazy(() => BlockSchema).optional(),
 }) as z.ZodType<SplitBlockT>;
 
-type SequenceBlockT = { type: "sequence"; items: Block[] };
+type SequenceBlockT = {
+  type: "sequence";
+  variant: SequenceVariant;
+  items: Block[];
+};
 
 export const SequenceBlockSchema: z.ZodType<SequenceBlockT> = z.object({
   type: z.literal("sequence"),
+  variant: SequenceVariantSchema.default("stack"),
   items: z.array(z.lazy(() => BlockSchema)).min(1),
 }) as z.ZodType<SequenceBlockT>;
 
-type LightboxBlockT = { type: "lightbox"; trigger: Block; content: Block };
+type LightboxBlockT = {
+  type: "lightbox";
+  variant: LightboxVariant;
+  trigger: Block;
+  content: Block;
+};
 
 export const LightboxBlockSchema: z.ZodType<LightboxBlockT> = z.object({
   type: z.literal("lightbox"),
+  variant: LightboxVariantSchema.default("modal"),
   trigger: z.lazy(() => BlockSchema),
   content: z.lazy(() => BlockSchema),
 }) as z.ZodType<LightboxBlockT>;

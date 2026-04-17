@@ -1,6 +1,13 @@
 import { z } from "zod";
 import { DevStubBlockSchema, type DevStubBlock } from "./dev-stub";
-import type { StickyVariant, SplitVariant } from "./variants";
+import type {
+  StickyVariant,
+  SplitVariant,
+  CrossfadeVariant,
+  GridVariant,
+  SequenceVariant,
+  LightboxVariant,
+} from "./variants";
 import {
   StickyBlockSchema,
   ScrollStepsBlockSchema,
@@ -54,12 +61,14 @@ export type ScrollStepsBlock = {
 
 export type CrossfadeBlock = {
   type: "crossfade";
+  variant: CrossfadeVariant;
   activeIndex: number;
   frames: Block[];
 };
 
 export type GridBlock = {
   type: "grid";
+  variant: GridVariant;
   columns?: 2 | 3 | 4;
   aspectRatio?: string;
   cells: Block[];
@@ -75,10 +84,15 @@ export type SplitBlock = {
   legend?: Block;
 };
 
-export type SequenceBlock = { type: "sequence"; items: Block[] };
+export type SequenceBlock = {
+  type: "sequence";
+  variant: SequenceVariant;
+  items: Block[];
+};
 
 export type LightboxBlock = {
   type: "lightbox";
+  variant: LightboxVariant;
   trigger: Block;
   content: Block;
 };

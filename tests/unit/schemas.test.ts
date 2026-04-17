@@ -219,6 +219,10 @@ describe("LightboxBlock", () => {
 import {
   StickyBlockSchema,
   SplitBlockSchema,
+  CrossfadeBlockSchema,
+  GridBlockSchema,
+  LightboxBlockSchema,
+  SequenceBlockSchema,
 } from "../../src/lib/core/schemas/structural";
 
 describe("StickyBlockSchema v3 variant", () => {
@@ -285,5 +289,53 @@ describe("SplitBlockSchema v3 variant", () => {
     expect(() =>
       SplitBlockSchema.parse({ ...base, variant: "side-by-side" }),
     ).toThrow();
+  });
+});
+
+describe("Crossfade/Grid/Lightbox/Sequence — variant props", () => {
+  it("Crossfade default fade, accepts cut", () => {
+    const base = {
+      type: "crossfade" as const,
+      activeIndex: 0,
+      frames: [
+        { type: "dev-stub", label: "a" },
+        { type: "dev-stub", label: "b" },
+      ],
+    };
+    expect(CrossfadeBlockSchema.parse(base).variant).toBe("fade");
+    expect(() =>
+      CrossfadeBlockSchema.parse({ ...base, variant: "cut" }),
+    ).not.toThrow();
+  });
+
+  it("Grid default uniform, accepts featured", () => {
+    const base = {
+      type: "grid" as const,
+      cells: [{ type: "dev-stub", label: "c" }],
+    };
+    expect(GridBlockSchema.parse(base).variant).toBe("uniform");
+    expect(() =>
+      GridBlockSchema.parse({ ...base, variant: "featured" }),
+    ).not.toThrow();
+  });
+
+  it("Lightbox default modal, accepts inline-expand", () => {
+    const base = {
+      type: "lightbox" as const,
+      trigger: { type: "dev-stub", label: "t" },
+      content: { type: "dev-stub", label: "c" },
+    };
+    expect(LightboxBlockSchema.parse(base).variant).toBe("modal");
+    expect(() =>
+      LightboxBlockSchema.parse({ ...base, variant: "inline-expand" }),
+    ).not.toThrow();
+  });
+
+  it("Sequence default stack", () => {
+    const base = {
+      type: "sequence" as const,
+      items: [{ type: "dev-stub", label: "i" }],
+    };
+    expect(SequenceBlockSchema.parse(base).variant).toBe("stack");
   });
 });
