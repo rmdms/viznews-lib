@@ -1,0 +1,61 @@
+{
+  "slug": "gallery-carousel-demo",
+  "metadata": {
+    "title": "Gallery Carousel demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "gallery-carousel",
+      "columns": 3,
+      "aspectRatio": "4 / 3",
+      "cells": [
+        {
+          "type": "dev-stub",
+          "label": "Cell 1"
+        },
+        {
+          "type": "dev-stub",
+          "label": "Cell 2"
+        },
+        {
+          "type": "dev-stub",
+          "label": "Cell 3"
+        },
+        {
+          "type": "dev-stub",
+          "label": "Cell 4"
+        },
+        {
+          "type": "dev-stub",
+          "label": "Cell 5"
+        },
+        {
+          "type": "dev-stub",
+          "label": "Cell 6"
+        }
+      ]
+    }
+  ]
+}

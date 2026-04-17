@@ -1,0 +1,69 @@
+{
+  "slug": "scrolly-map-demo",
+  "metadata": {
+    "title": "Scrolly Map demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "scrolly-map",
+      "map": {
+        "type": "mt-map",
+        "style": {},
+        "bounds": [6.1, 46.15, 6.25, 46.3],
+        "alt": "Map of Geneva region",
+        "height": 600,
+        "interactive": false,
+        "flyToSteps": [
+          {
+            "bounds": [6.1, 46.15, 6.25, 46.3],
+            "label": "Geneva region overview"
+          },
+          {
+            "bounds": [6.135, 46.19, 6.165, 46.21],
+            "label": "Central Geneva"
+          },
+          {
+            "bounds": [6.12, 46.17, 6.18, 46.25],
+            "label": "Lake Geneva and surroundings"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "type": "dev-stub",
+          "label": "Step 1 — Introduction to the scrolly map, showing the Geneva region and initial overview."
+        },
+        {
+          "type": "dev-stub",
+          "label": "Step 2 — Zooming into central Geneva to reveal urban details."
+        },
+        {
+          "type": "dev-stub",
+          "label": "Step 3 — Expanding view to show Lake Geneva and the surrounding landscape."
+        }
+      ]
+    }
+  ]
+}

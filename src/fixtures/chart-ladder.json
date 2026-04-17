@@ -1,0 +1,67 @@
+{
+  "slug": "chart-ladder-demo",
+  "metadata": {
+    "title": "Chart Ladder demo",
+    "byline": "test",
+    "publishedAt": "2026-04-16"
+  },
+  "tokens": {
+    "locale": "fr-CH",
+    "palette": {
+      "scheme": "viridis",
+      "background": "#ffffff",
+      "foreground": "#111111",
+      "muted": "#666666",
+      "accent": "#156964"
+    },
+    "typography": {
+      "bodyFontFamily": "'Inter', system-ui, sans-serif",
+      "headingFontFamily": "'Inter', system-ui, sans-serif",
+      "monoFontFamily": "'JetBrains Mono', monospace",
+      "baseSize": 17,
+      "scale": 1.25
+    },
+    "spacing": { "unit": 8 },
+    "sourceStyle": { "format": "footnote", "prefix": "Source : " },
+    "mode": "light"
+  },
+  "blocks": [
+    {
+      "type": "chart-ladder",
+      "frames": [
+        {
+          "type": "dev-stub",
+          "label": "Frame 1 — Initial state",
+          "height": 400,
+          "backgroundColor": "#e8f5e9"
+        },
+        {
+          "type": "dev-stub",
+          "label": "Frame 2 — Progression",
+          "height": 400,
+          "backgroundColor": "#c8e6c9"
+        },
+        {
+          "type": "dev-stub",
+          "label": "Frame 3 — Final state",
+          "height": 400,
+          "backgroundColor": "#a5d6a7"
+        }
+      ],
+      "steps": [
+        {
+          "type": "dev-stub",
+          "label": "Step 1 — Introducing the chart ladder pattern with the first frame displayed."
+        },
+        {
+          "type": "dev-stub",
+          "label": "Step 2 — Transitioning to the second frame as the narrative progresses."
+        },
+        {
+          "type": "dev-stub",
+          "label": "Step 3 — Final frame showing the conclusion of the visual progression."
+        }
+      ]
+    }
+  ]
+}
