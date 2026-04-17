@@ -2,6 +2,7 @@ import { describe, it, expect } from "bun:test";
 import { DesignTokensSchema } from "../../src/lib/core/schemas/design-tokens";
 import { defaultTokens } from "../../src/lib/core/design-tokens";
 import { tokensToCSSVariables } from "../../src/lib/core/harmonize";
+import { applyPositioning } from "../../src/lib/core/apply-positioning";
 
 describe("DesignTokensSchema", () => {
   it("accepts defaultTokens()", () => {
@@ -121,5 +122,49 @@ describe("tokensToCSSVariables", () => {
     dark.palette.background = "#0a0a0a";
     const css = tokensToCSSVariables(dark);
     expect(css).toContain("--vn-color-bg: #0a0a0a");
+  });
+});
+
+describe("tokensToCSSVariables v3 — derived tokens", () => {
+  it("emits --vn-radius from resolved radius", () => {
+    const resolved = applyPositioning(
+      defaultTokens({ positioning: "balanced" }),
+    );
+    const css = tokensToCSSVariables(resolved);
+    expect(css).toContain("--vn-radius:");
+    expect(css).toMatch(/--vn-radius:\s*(0|4px|12px)/);
+  });
+
+  it("emits --vn-shadow from resolved shadow", () => {
+    const resolved = applyPositioning(
+      defaultTokens({ positioning: "airy-contemplative" }),
+    );
+    const css = tokensToCSSVariables(resolved);
+    expect(css).toContain("--vn-shadow:");
+  });
+
+  it("emits --vn-border from resolved border", () => {
+    const resolved = applyPositioning(
+      defaultTokens({ positioning: "editorial-tight" }),
+    );
+    const css = tokensToCSSVariables(resolved);
+    expect(css).toContain("--vn-border:");
+  });
+
+  it("emits --vn-overlay", () => {
+    const resolved = applyPositioning({
+      ...defaultTokens(),
+      overlay: "darken-50",
+    });
+    const css = tokensToCSSVariables(resolved);
+    expect(css).toContain("--vn-overlay:");
+  });
+
+  it("emits --vn-layout-rhythm-gap from layoutRhythm", () => {
+    const r = applyPositioning(
+      defaultTokens({ positioning: "dashboard-dense" }),
+    );
+    const css = tokensToCSSVariables(r);
+    expect(css).toContain("--vn-layout-rhythm-gap:");
   });
 });
