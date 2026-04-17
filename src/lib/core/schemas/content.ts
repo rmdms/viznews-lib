@@ -52,7 +52,7 @@ const FlyToStepSchema = z.object({
 
 export const MTMapBlockSchema = z.object({
   type: z.literal("mt-map"),
-  style: z.record(z.unknown()),
+  style: z.record(z.string(), z.unknown()),
   bounds: z.tuple([z.number(), z.number(), z.number(), z.number()]),
   alt: z.string(),
   height: z.number().positive().optional(),
