@@ -1,5 +1,11 @@
 # @rmdms/viznews
 
+## 0.2.0
+
+### Minor Changes
+
+- 83cdd0c: Expose core utilities from the root entry: `buildArticlePage`, `expandRecipes`, `tokensToCSSVariables`. These were previously only available by deep import, which is blocked by the `exports` map. Consumers can now build a runnable article page without re-implementing recipe expansion or CSS variable synthesis.
+
 ## 0.1.0
 
 ### Minor Changes

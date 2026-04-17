@@ -1,6 +1,6 @@
 {
   "name": "@rmdms/viznews",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Structural + content primitives for newsroom data-viz articles",
   "license": "MIT",
   "author": "Rémy Dumas",
