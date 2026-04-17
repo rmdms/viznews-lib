@@ -14,6 +14,13 @@ export type {
 export type { Article } from "./core/schemas/article";
 export type { DesignTokens } from "./core/design-tokens";
 export * from "./content-primitives";
+export * from "./recipes";
+export type {
+  ScrollyStickyContentBlock,
+  ChartLadderBlock,
+  GalleryCarouselBlock,
+  ScrollyMapBlock,
+} from "./core/schemas/recipes";
 export type {
   MarkdownBlock,
   ImageBlock,

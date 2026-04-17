@@ -2,6 +2,7 @@
   import type { Block } from './core/schemas/block';
   import { Sticky, ScrollSteps, Crossfade, Grid, Split, Sequence, Lightbox } from './structural-primitives';
   import { Markdown, Image, Video, DWChart, FlourishChart, MTMap } from './content-primitives';
+  import { ScrollyMap } from './recipes';
   import Self from './BlockRenderer.svelte';
   let { block }: { block: Block } = $props();
 </script>
@@ -90,6 +91,8 @@
   <FlourishChart embedUrl={block.embedUrl} title={block.title} alt={block.alt} height={block.height} />
 {:else if block.type === 'mt-map'}
   <MTMap style={block.style} bounds={block.bounds} alt={block.alt} height={block.height} interactive={block.interactive} flyToSteps={block.flyToSteps} />
+{:else if block.type === 'scrolly-map'}
+  <ScrollyMap map={block.map} steps={block.steps} />
 {/if}
 
 <style>
