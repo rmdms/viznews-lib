@@ -82,6 +82,23 @@ describe("DesignTokensSchema v3 extensions", () => {
   });
 });
 
+describe("defaultTokens() v3 runtime type", () => {
+  it("includes positioning defaulted to balanced", () => {
+    const t = defaultTokens();
+    expect(t.positioning).toBe("balanced");
+  });
+
+  it("includes breakpoints defaulted to { mobile: 768, tablet: 1024 }", () => {
+    const t = defaultTokens();
+    expect(t.breakpoints).toEqual({ mobile: 768, tablet: 1024 });
+  });
+
+  it("allows positioning override via opts", () => {
+    const t = defaultTokens({ positioning: "airy-contemplative" });
+    expect(t.positioning).toBe("airy-contemplative");
+  });
+});
+
 describe("tokensToCSSVariables", () => {
   it("returns CSS custom property lines", () => {
     const css = tokensToCSSVariables(defaultTokens());
