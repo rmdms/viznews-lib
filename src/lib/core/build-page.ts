@@ -1,6 +1,7 @@
 import { ArticleSchema, type Article } from "./schemas/article";
 import type { Block } from "./schemas/block";
 import { tokensToCSSVariables } from "./harmonize";
+import { expandRecipes } from "./expand-recipes";
 
 export interface ArticlePageData {
   slug: string;
@@ -11,10 +12,11 @@ export interface ArticlePageData {
 
 export function buildArticlePage(spec: unknown): ArticlePageData {
   const article = ArticleSchema.parse(spec);
+  const blocks = expandRecipes(article.blocks);
   return {
     slug: article.slug,
     metadata: article.metadata,
-    blocks: article.blocks,
+    blocks,
     cssVariables: tokensToCSSVariables(article.tokens),
   };
 }
