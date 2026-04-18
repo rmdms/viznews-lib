@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import type { PageLoad } from "./$types";
 import { buildArticlePage } from "$lib/core/build-page";
 
