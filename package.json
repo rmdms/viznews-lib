@@ -16,6 +16,7 @@
     "test": "bun test tests/unit",
     "test:e2e": "playwright test",
     "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:roadmap": "bun run scripts/check-roadmap-alignment.ts",
     "release": "changeset version && changeset publish"
   },
   "exports": {
