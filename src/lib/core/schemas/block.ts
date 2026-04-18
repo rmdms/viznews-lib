@@ -18,6 +18,7 @@ import {
   LightboxBlockSchema,
 } from "./structural";
 import { FlowBlockSchema, type FlowBlock } from "./flow";
+import { ExploreBlockSchema, type ExploreBlock } from "./explore";
 import {
   MarkdownBlockSchema,
   ImageBlockSchema,
@@ -117,9 +118,10 @@ export type Block =
   | ScrollyStickyContentBlock
   | ChartLadderBlock
   | GalleryCarouselBlock
-  | ScrollyMapBlock;
+  | ScrollyMapBlock
+  | ExploreBlock;
 
-export type { FlowBlock };
+export type { FlowBlock, ExploreBlock };
 
 export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
   z.union([
@@ -142,5 +144,6 @@ export const BlockSchema: z.ZodType<Block> = z.lazy(() =>
     ChartLadderBlockSchema,
     GalleryCarouselBlockSchema,
     ScrollyMapBlockSchema,
+    ExploreBlockSchema,
   ]),
 );
