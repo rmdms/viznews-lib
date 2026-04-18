@@ -1,5 +1,48 @@
 # @rmdms/viznews
 
+## 3.0.0
+
+### Major Changes
+
+- 27caf86: v3.0.0-beta.0 — Foundation
+
+  - Bump Zod v3 → v4 (breaking on consumers using zod directly)
+  - DesignTokens v3: new positioning axis + 5 optional derived tokens
+  - applyPositioning() cascade: prescriptive mapping positioning → tokens
+  - validateVariants() build-time warnings for Tier 2+ variants
+  - tokensToCSSVariables emits --vn-radius/shadow/border/overlay/layout-rhythm-gap
+  - buildArticlePage returns `warnings: string[]` (additive, non-breaking shape)
+  - Exports: applyPositioning, validateVariants, all variant enums, Positioning types
+
+- 5704eb5: v3.0.0-beta.1 — Variants + Flow
+
+  - Sticky/Split/Crossfade/Grid/Lightbox/Sequence: `variant` prop + Tier 1 CSS variants
+  - Split: drag-separator with clip-path compare slider
+  - Flow: new structural primitive (7 variants text-only + image-\*)
+  - BlockRenderer dispatches all new variants
+  - Dev harness /dev/v3/<primitive>/<variant> covers Tier 1 + fallback targets
+  - Playwright contracts gate render behavior per variant
+
+- 589702d: v3.0.0-beta.2 — Explore + content primitives
+
+  - Explore primitive + ExploreLegend with auto legend routing
+    (mt-map → lib, DW/FL → native)
+  - DWChart adopts --vn-radius + --vn-shadow
+  - Image: optional srcset + sizes with <picture>
+  - Markdown: accepts raw md (marked) or html, DOMPurify sanitize
+
+- v3.0.0 GA — Rebuild complet
+
+  Consolidation des trois beta :
+
+  - beta.0 : Zod v4, DesignTokens v3, positioning cascade, validateVariants.
+  - beta.1 : variants Tier 1 sur 6 primitives + Flow.
+  - beta.2 : Explore + ExploreLegend + DWChart/Image/Markdown upgrades.
+
+  Dev harness complet. Playwright contract green. README v3. ROADMAP alignment verifié.
+
+  Consommateur plugin : `bun add @rmdms/viznews@^3.0.0`.
+
 ## 3.0.0-beta.2
 
 ### Major Changes
