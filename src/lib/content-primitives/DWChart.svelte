@@ -24,6 +24,11 @@
 </figure>
 
 <style>
-  .vn-dw-chart { margin: 0; }
+  .vn-dw-chart {
+    margin: 0;
+    border-radius: var(--vn-radius, 0);
+    box-shadow: var(--vn-shadow, none);
+    overflow: hidden;
+  }
   .vn-dw-chart iframe { border: none; display: block; }
 </style>
