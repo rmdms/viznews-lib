@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Block } from './core/schemas/block';
-  import { Sticky, ScrollSteps, Crossfade, Grid, Split, Sequence, Lightbox, Flow } from './structural-primitives';
+  import { Sticky, ScrollSteps, Crossfade, Grid, Split, Sequence, Lightbox, Flow, Explore } from './structural-primitives';
   import { Markdown, Image, Video, DWChart, FlourishChart, MTMap } from './content-primitives';
   import { ScrollyMap } from './recipes';
   import Self from './BlockRenderer.svelte';
@@ -92,6 +92,8 @@
   <MTMap style={block.style} bounds={block.bounds} alt={block.alt} height={block.height} interactive={block.interactive} flyToSteps={block.flyToSteps} />
 {:else if block.type === 'scrolly-map'}
   <ScrollyMap map={block.map} steps={block.steps} />
+{:else if block.type === 'explore'}
+  <Explore variant={block.variant} content={block.content} legend={block.legend} sourceNote={block.sourceNote} />
 {/if}
 
 <style>
