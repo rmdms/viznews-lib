@@ -1,6 +1,7 @@
 // tests/unit/content-schemas.test.ts
 import { describe, it, expect } from "bun:test";
 import { BlockSchema } from "../../src/lib/core/schemas/block";
+import { MarkdownBlockSchema } from "../../src/lib/core/schemas/content";
 
 describe("MarkdownBlock", () => {
   it("accepts valid markdown block", () => {
@@ -177,5 +178,21 @@ describe("MTMapBlock", () => {
         bounds: [6.1, 46.2, 6.3, 46.3],
       }),
     ).toThrow();
+  });
+});
+
+describe("MarkdownBlockSchema v3 — md or html", () => {
+  it("accepts html form", () => {
+    expect(() =>
+      MarkdownBlockSchema.parse({ type: "markdown", html: "<p>x</p>" }),
+    ).not.toThrow();
+  });
+  it("accepts md form", () => {
+    expect(() =>
+      MarkdownBlockSchema.parse({ type: "markdown", md: "# Titre" }),
+    ).not.toThrow();
+  });
+  it("rejects neither", () => {
+    expect(() => MarkdownBlockSchema.parse({ type: "markdown" })).toThrow();
   });
 });

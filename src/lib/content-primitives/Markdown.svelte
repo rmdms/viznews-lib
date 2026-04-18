@@ -1,9 +1,23 @@
 <script lang="ts">
-  let { html }: { html: string } = $props();
+  import { marked } from 'marked';
+  import DOMPurify from 'isomorphic-dompurify';
+
+  let props: { html?: string; md?: string } = $props();
+
+  const rendered = $derived.by(() => {
+    if ('md' in props && props.md) {
+      const parsed = marked.parse(props.md, { async: false }) as string;
+      return DOMPurify.sanitize(parsed);
+    }
+    if ('html' in props && props.html) {
+      return DOMPurify.sanitize(props.html);
+    }
+    return '';
+  });
 </script>
 
 <figure class="vn-markdown" data-testid="markdown-root">
-  {@html html}
+  {@html rendered}
 </figure>
 
 <style>

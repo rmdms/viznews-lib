@@ -79,7 +79,11 @@
 {:else if block.type === 'flow'}
   <Flow variant={block.variant} children={block.children} />
 {:else if block.type === 'markdown'}
-  <Markdown html={block.html} />
+  {#if 'md' in block}
+    <Markdown md={block.md} />
+  {:else}
+    <Markdown html={block.html} />
+  {/if}
 {:else if block.type === 'image'}
   <Image src={block.src} alt={block.alt} aspectRatio={block.aspectRatio} caption={block.caption} />
 {:else if block.type === 'video'}

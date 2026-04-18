@@ -1,9 +1,9 @@
 import { z } from "zod";
 
-export const MarkdownBlockSchema = z.object({
-  type: z.literal("markdown"),
-  html: z.string().min(1),
-});
+export const MarkdownBlockSchema = z.union([
+  z.object({ type: z.literal("markdown"), html: z.string().min(1) }),
+  z.object({ type: z.literal("markdown"), md: z.string().min(1) }),
+]);
 
 export const ImageBlockSchema = z.object({
   type: z.literal("image"),
