@@ -9,6 +9,12 @@ export const ImageBlockSchema = z.object({
   type: z.literal("image"),
   src: z.string().url(),
   alt: z.string(),
+  srcset: z
+    .array(
+      z.object({ src: z.string().url(), width: z.number().int().positive() }),
+    )
+    .optional(),
+  sizes: z.string().optional(),
   aspectRatio: z
     .string()
     .regex(/^\d+\s*\/\s*\d+$/)
