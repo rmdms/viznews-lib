@@ -6,6 +6,7 @@
   },
   "changesets": [
     "v3-beta-0-foundation",
-    "v3-beta-1-variants"
+    "v3-beta-1-variants",
+    "v3-beta-2-explore-content"
   ]
 }
