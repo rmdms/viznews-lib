@@ -6,3 +6,4 @@ export { default as Split } from "./Split.svelte";
 export { default as Sequence } from "./Sequence.svelte";
 export { default as Lightbox } from "./Lightbox.svelte";
 export { default as Flow } from "./Flow.svelte";
+export { default as ExploreLegend } from "./ExploreLegend.svelte";
